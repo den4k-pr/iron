@@ -1,0 +1,200 @@
+/* Контейнер слайдера */
+.slider {
+    padding-top: 70px;
+    padding-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+    z-index: 4;
+}
+
+.sliderTitle {
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 145%;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-family: 'SONGER Condensed', sans-serif;
+    text-align: center;
+    color: #fff;
+}
+
+.slick-initialized .slick-slide{
+    padding: 0 10px !important;
+}
+
+
+/* Обгортка слайду */
+.receipts-slider {
+    max-width: 420px;
+    margin: 0 auto;
+    position: relative !important;
+}
+
+/* Слайд-елемент — вирівнювання */
+.receipts-slider .slider-item {
+    padding: 0;
+    box-sizing: border-box;
+
+    border-radius: 25px;
+    width: 398px;
+    height: 340px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid #595959 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.slick-dots li,
+.slick-dots li button {
+    font-size: 6px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0 !important;
+    width: 30px !important;
+    max-height: 4px !important;
+    overflow: hidden;
+    text-align: center;
+    background: #fff !important;
+}
+
+.slick-dots li button:before{
+    display: none;
+}
+
+
+.slick-track{
+    display: flex !important;
+    align-items: center !important;
+    padding-top: 30px;
+}
+
+.receipts-slider .slider-item img{
+    max-height: 220px !important;
+    object-fit: contain;
+    width: 230px;
+    margin: auto;
+    border-radius: 15px;
+}
+
+/* Зображення — адаптивне, без трансформів */
+.receipts-slider img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 0.5rem;
+}
+
+/* Мінімальна/фіксована висота контейнера (щоб не скакало)
+   Налаштуй значення під твої зображення; можна видалити, якщо всі картинки однакові */
+.receipts-slider {
+    min-height: 260px;
+    /* підбери під ваші картинки */
+}
+
+/* Стилі стрілок (кастомні) */
+.receipts-slider .slick-prev,
+.receipts-slider .slick-next {
+    width: 95px;
+    height: 51px;
+    border: none;
+    cursor: pointer;
+    top: auto !important;
+    bottom: -60px !important;
+    z-index: 50;
+    outline: none;
+    position: absolute !important;
+}
+
+/* Ліва стрілка */
+.receipts-slider .slick-prev {
+    background: url('../images/left-arrow.png') !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center;
+    right: 100px !important;
+    
+    left: auto;
+}
+
+/* Права стрілка */
+.receipts-slider .slick-next {
+    background: url('../images/right-arrow.png') !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background-position: center;
+
+    right: 0px !important;
+    left: auto;
+}
+
+/* Приховати псевдо before, який додає slick за замовчуванням */
+.receipts-slider .slick-prev:before,
+.receipts-slider .slick-next:before {
+    display: none;
+}
+
+/* Точки */
+.slick-dots {
+    display: flex !important;
+    margin: 0;
+    padding: 0;
+    bottom: -10px !important;
+    max-width: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+    list-style: none;
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    z-index: 9;
+}
+
+.slick-dots li{
+    border: none !important;
+    opacity: 0.5;
+}
+
+.slick-active {
+    color: #fff !important;
+    
+    opacity: 1 !important;
+    border: none !important;
+}
+
+.slider-img{
+    max-height: 220px !important;
+}
+
+.slick-dotted.slick-slider{
+    padding-bottom: 40px;
+}
+
+.protect-img{
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+
+
+@media(max-width: 420px) {
+
+    .inl {
+
+        padding: 100px 10px 30px 10px;
+    }
+
+    .receipts-slider img {
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .slider{
+        padding-bottom: 0px !important;
+    }
+}
