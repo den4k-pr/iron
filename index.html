@@ -386,6 +386,17 @@
     <script defer src="./js/timer.js"></script>
     <script defer src="./js/slider.js"></script>
     <script defer src="./js/app.js"></script>
+    <script>
+    window.onload = function() {
+        // Чистимо куки
+        document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        // Чистимо локальну пам'ять, куди Mailchimp теж почав писати в 2025 році
+        localStorage.removeItem('mc-popup-closed');
+        sessionStorage.removeItem('mc-popup-closed');
+        console.log("Локальна пам'ять для Mailchimp очищена");
+    };
+    </script>
 </body>
 
 </html>
