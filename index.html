@@ -14,38 +14,47 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
     <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-    
-    <script>
-        function openMcPopup() {
-            // 1. Чистимо куки, щоб попап відкривався щоразу
-            document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-            document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    
-            // 2. Створюємо функцію ініціалізації
-            var launchForm = function() {
-                if (window.dojoRequire) {
-                    window.dojoRequire(["mojo/signup-forms/Loader"], function(L) {
-                        L.start({
-                            "baseUrl": "mc.us18.list-manage.com",
-                            "uuid": "ba2409e015681701aad0a35f7",
-                            "lid": "2a770a6115"
-                        });
-                    });
-                }
-            };
-    
-            // 3. Якщо бібліотека вже є - запускаємо, якщо ні - вантажимо її напряму
-            if (window.dojoRequire) {
-                launchForm();
-            } else {
-                var script = document.createElement('script');
-                script.src = "https://chimpstatic.com/mcjs-connected/js/users/ba2409e015681701aad0a35f7/210738f3f5f463776bb808db0.js";
-                script.type = "text/javascript";
-                script.onload = launchForm;
-                document.head.appendChild(script);
-            }
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/ba2409e015681701aad0a35f7/210738f3f5f463776bb808db0.js");</script>
+   <script>
+function openMcPopup() {
+    // 1. Повне очищення Cookies
+    const cookies = document.cookie.split(";");
+    for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        const eqPos = cookie.indexOf("=");
+        const name = eqPos > -1 ? cookie.substr(0, eqPos).trim() : cookie.trim();
+        if (name.includes("MCPopup")) {
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=" + window.location.hostname;
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;";
         }
-    </script>
+    }
+
+    // 2. Повне очищення LocalStorage та SessionStorage (куди Mailchimp теж пише дані)
+    Object.keys(localStorage).forEach(key => {
+        if (key.includes("mc-") || key.includes("MCPopup")) localStorage.removeItem(key);
+    });
+    Object.keys(sessionStorage).forEach(key => {
+        if (key.includes("mc-") || key.includes("MCPopup")) sessionStorage.removeItem(key);
+    });
+
+    // 3. Примусовий запуск форми
+    if (window.dojoRequire) {
+        window.dojoRequire(["mojo/signup-forms/Loader"], function(L) {
+            L.start({
+                "baseUrl": "mc.us18.list-manage.com",
+                "uuid": "ba2409e015681701aad0a35f7",
+                "lid": "2a770a6115"
+            });
+        });
+    } else {
+        // Якщо бібліотека не завантажена, вантажимо її напряму
+        const script = document.createElement('script');
+        script.src = "https://chimpstatic.com/mcjs-connected/js/users/ba2409e015681701aad0a35f7/210738f3f5f463776bb808db0.js";
+        script.onload = () => openMcPopup();
+        document.head.appendChild(script);
+    }
+}
+</script>
     
     <title>CORE IRON</title>
     
@@ -417,7 +426,6 @@
     <script defer src="./js/timer.js"></script>
     <script defer src="./js/slider.js"></script>
     <script defer src="./js/app.js"></script>
-    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/ba2409e015681701aad0a35f7/210738f3f5f463776bb808db0.js");</script>
 </body>
 
 </html>
