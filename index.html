@@ -17,33 +17,34 @@
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/ba2409e015681701aad0a35f7/210738f3f5f463776bb808db0.js");</script>
     <script>
         function openMcPopup() {
-    // 1. Очищаємо куки, щоб попап не блокувався
-    document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-
-    // 2. Функція для запуску форми
-    var showForm = function() {
-        if (window.dojoRequire) {
-            window.dojoRequire(["mojo/signup-forms/Loader"], function(L) {
-                L.start({
-                    "baseUrl": "mc.us18.list-manage.com",
-                    "uuid": "ba2409e015681701aad0a35f7",
-                    "lid": "2a770a6115"
-                });
-            });
+            // 1. Чистимо куки, щоб попап відкривався щоразу
+            document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+            // 2. Створюємо функцію ініціалізації
+            var launchForm = function() {
+                if (window.dojoRequire) {
+                    window.dojoRequire(["mojo/signup-forms/Loader"], function(L) {
+                        L.start({
+                            "baseUrl": "mc.us18.list-manage.com",
+                            "uuid": "ba2409e015681701aad0a35f7",
+                            "lid": "2a770a6115"
+                        });
+                    });
+                }
+            };
+    
+            // 3. Якщо бібліотека вже є - запускаємо, якщо ні - вантажимо її напряму
+            if (window.dojoRequire) {
+                launchForm();
+            } else {
+                var script = document.createElement('script');
+                script.src = "https://chimpstatic.com/mcjs-connected/js/users/ba2409e015681701aad0a35f7/210738f3f5f463776bb808db0.js";
+                script.type = "text/javascript";
+                script.onload = launchForm;
+                document.head.appendChild(script);
+            }
         }
-    };
-
-    // 3. Якщо бібліотека ще не завантажена, підтягуємо її вручну
-    if (!window.dojoRequire) {
-        var script = document.createElement('script');
-        script.src = "https://chimpstatic.com/mcjs-connected/js/users/ba2409e015681701aad0a35f7/210738f3f5f463776bb808db0.js";
-        script.onload = showForm;
-        document.head.appendChild(script);
-    } else {
-        showForm();
-    }
-}
     </script>
     
     <title>CORE</title>
